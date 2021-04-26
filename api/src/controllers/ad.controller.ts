@@ -22,11 +22,11 @@ import {AdRepository} from '../repositories';
 
 const RESOURCE_NAME = 'ad';
 const ACL_AD = {
-  read: {
-    resource: `${RESOURCE_NAME}*`,
-    scopes: ['read'],
-    allowedRoles: ['authenticated'],
-  },
+  // view: {
+  //   resource: `${RESOURCE_NAME}*`,
+  //   scopes: ['view'],
+  //   allowedRoles: ['authenticated'],
+  // },
   update: {
     resource: `${RESOURCE_NAME}*`,
     scopes: ['update'],
@@ -79,8 +79,6 @@ export class AdController {
     description: 'Ad model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  @authenticate('jwt')
-  @authorize(ACL_AD['read'])
   async count(
     @param.where(Ad) where?: Where<Ad>,
   ): Promise<Count> {
@@ -99,8 +97,6 @@ export class AdController {
       },
     },
   })
-  @authenticate('jwt')
-  @authorize(ACL_AD['read'])
   async find(
     @param.filter(Ad) filter?: Filter<Ad>,
   ): Promise<Ad[]> {
@@ -117,8 +113,6 @@ export class AdController {
       },
     },
   })
-  @authenticate('jwt')
-  @authorize(ACL_AD['read'])
   async findById(
     @param.path.number('id') id: number,
     @param.filter(Ad, {exclude: 'where'}) filter?: FilterExcludingWhere<Ad>
