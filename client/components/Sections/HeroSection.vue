@@ -14,17 +14,19 @@
 <style lang="scss">
 .hero {
   display: grid;
-  grid-template-columns: repeat(12, 86px);
+  grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto auto 1fr;
   gap: 24px;
+  align-items: flex-end;
 
   &__image {
     grid-column: 6/-1;
     grid-row: 1/-1;
+    width: 100%;
   }
 
   &__title {
-    grid-column: 1/5;
+    grid-column: 1/7;
     grid-row: 1/2;
     font-family: $font-family--noto-sans;
     font-weight: 700;
@@ -32,11 +34,12 @@
     line-height: 72px;
   }
   &__description {
-    grid-column: 1/5;
+    grid-column: 1/7;
     grid-row: 2/3;
     font-family: $font-family--noto-sans;
     font-size: 20px;
     line-height: 30px;
+    z-index: 2;
   }
 }
 </style>

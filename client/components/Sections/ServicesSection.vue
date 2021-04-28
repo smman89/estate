@@ -49,6 +49,7 @@ export default {
     display: flex;
     justify-content: space-around;
     list-style: none;
+    padding: 0;
   }
 
   &__item {
