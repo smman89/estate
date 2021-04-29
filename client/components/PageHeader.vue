@@ -3,22 +3,24 @@
     <nav class="main-nav">
       <ul class="main-nav__list">
         <li class="main-nav__item">
-          <a href="#" class="main-nav__link">Объявления</a>
+          <NuxtLink to="/properties" class="main-nav__link"
+            >Объявления</NuxtLink
+          >
         </li>
         <li class="main-nav__item">
-          <a href="#" class="main-nav__link">Правила</a>
+          <NuxtLink to="/" class="main-nav__link">Правила</NuxtLink>
         </li>
         <li class="main-nav__item">
-          <a href="#" class="main-nav__link">Контакты</a>
+          <NuxtLink to="/" class="main-nav__link">Контакты</NuxtLink>
         </li>
       </ul>
       <ul class="main-nav__list user-list">
         <li class="user-list__item">
-          <a class="user-list__login" href="">Войти</a>
+          <NuxtLink class="user-list__login" to="/login">Войти</NuxtLink>
         </li>
         <li class="user-list__item">
-          <a class="user-list__add-property button" href=""
-            >+ Подать объявление</a
+          <NuxtLink to="/properties/add" class="user-list__add-property button"
+            >+ Подать объявление</NuxtLink
           >
         </li>
       </ul>

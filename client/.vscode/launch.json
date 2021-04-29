@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "client: chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "server: nuxt",
+      "args": ["dev"],
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/nuxt/bin/nuxt.js"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Config",
+      "args": ["dev"],
+      "windows": {
+        "program": "${workspaceFolder}/nuxt.config.js"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "fullstack: nuxt",
+      "configurations": ["server: nuxt", "client: chrome"]
+    }
+  ]
+}

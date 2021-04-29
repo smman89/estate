@@ -34,6 +34,7 @@ export default {
     '@nuxtjs/eslint-module',
   ],
 
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
@@ -42,7 +43,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseUrl: 'http://localhost:4000',
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

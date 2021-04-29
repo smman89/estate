@@ -25,7 +25,7 @@ export default {
     ServicesSection,
     PropertiesSection,
     CitySection,
-    PageFooter,
-  },
+    PageFooter
+  }
 }
 </script>

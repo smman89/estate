@@ -32,7 +32,7 @@ export default {
           address: 'address',
           price: '100',
           id: 1,
-          image: 'property-1.png',
+          image: 'property-1.png'
         },
         {
           title: 'Title',
@@ -40,7 +40,7 @@ export default {
           address: 'address',
           price: '100',
           id: 2,
-          image: 'property-2.png',
+          image: 'property-2.png'
         },
         {
           title: 'Title',
@@ -48,11 +48,11 @@ export default {
           address: 'address',
           price: '200',
           id: 3,
-          image: 'property-3.png',
-        },
-      ],
+          image: 'property-3.png'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 
