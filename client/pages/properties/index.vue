@@ -1,18 +1,17 @@
 <template>
   <div>
-    <PageHeader />
     <main class="page-properties container-properties">
       <h1 class="page-properties__title">Объявления</h1>
       <section class="filter">Фильтр</section>
       <section class="properties">
         <h2 class="properties__title">Объявления об аренде</h2>
 
+        <div class="properties__tools">
+          <div class="properties__sort">Сортировать:</div>
+          <div class="properties__count">{{ propertiesCount }} объявлений</div>
+        </div>
         <ul class="properties__list">
-          <li
-            class="properties__item"
-            v-for="(property, key) in properties"
-            :key="key"
-          >
+          <li class="properties__item" v-for="(property, key) in properties" :key="key">
             <img :src="property.images[0]" alt="" class="properties__image" />
             <p class="properties__description">Description</p>
           </li>
@@ -27,19 +26,11 @@
         </ul>
       </section>
     </main>
-    <PageFooter />
   </div>
 </template>
 
 <script>
-import PageHeader from '../components/PageHeader'
-import PageFooter from '../components/PageFooter'
-
 export default {
-  components: {
-    PageHeader,
-    PageFooter
-  },
   data() {
     return {
       currentPage: 1,
@@ -51,8 +42,11 @@ export default {
     properties() {
       return this.$store.state.property.list
     },
+    propertiesCount() {
+      return this.$store.state.property.count
+    },
     pages() {
-      let pagesLength = this.$store.state.property.count / this.limit
+      const pagesLength = this.propertiesCount / this.limit
       return Array.from({ length: pagesLength }, (_, i) => i + 1)
     }
   },
@@ -115,14 +109,18 @@ export default {
   &__item {
     grid-column: span 3;
     min-height: 400px;
-    box-shadow: 0px 2px 2px -2px rgba(31, 27, 45, 0.08),
-      0px 4px 12px rgba(31, 27, 45, 0.08);
+    box-shadow: 0px 2px 2px -2px rgba(31, 27, 45, 0.08), 0px 4px 12px rgba(31, 27, 45, 0.08);
     border-radius: 12px;
   }
 
   &__image {
     width: 100%;
     border-radius: 12px;
+  }
+
+  &__tools {
+    display: flex;
+    justify-content: space-between;
   }
 }
 

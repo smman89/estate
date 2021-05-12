@@ -1,0 +1,12 @@
+.field {
+  &__input {
+    border: 1px solid #d5d2dc;
+    border-radius: 8px;
+    padding: 5px;
+  }
+
+  &__label {
+    font-family: $font-family--noto-sans;
+    font-size: 20px;
+  }
+}
