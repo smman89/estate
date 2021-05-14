@@ -27,7 +27,7 @@ export class User extends Entity {
   @property({
     type: 'string',
   })
-  username?: string;
+  username: string;
 
   // must keep it
   @property({

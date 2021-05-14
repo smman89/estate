@@ -89,7 +89,7 @@ export class UserController {
       },
     },
   })
-  async login(@requestBody(CredentialsRequestBodyLogin) credentials: Credentials): Promise<{token: string}> {
+  async login(@requestBody(CredentialsRequestBodyLogin) credentials: Credentials): Promise<{token: string, username: string}> {
     // ensure the user exists, and the password is correct
     const user = await this.userService.verifyCredentials(credentials);
 
@@ -101,7 +101,7 @@ export class UserController {
 
     const date = new Date().toISOString();
     await this.tokenRepository.create({id: token, ttl: 1209600, created: date, userId: user.id});
-    return {token};
+    return {token, username: user.username};
   }
 
   @post('/api/users/signup', {

@@ -10,7 +10,7 @@
 export default {
   async list({ commit }, params) {
     try {
-      const properties = await this.$axios.get(`/api/ads?filter[limit]=${params.limit}&filter[skip]=${params.skip}`)
+      const properties = await this.$axios.get(`/api/ads?filter={"limit":${params.limit},"skip":${params.skip},"where":${JSON.stringify(params.where)}}`)
       commit('list', properties)
       const count = await this.$axios.get(`/api/ads/count`)
       commit('count', count)

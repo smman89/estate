@@ -5,11 +5,31 @@
   font-weight: 700;
   font-family: $font-family--noto-sans;
   padding: 10px 24px;
-  background-color: $primary;
+  align-items: center;
+
   color: white;
-  border-radius: 8px;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
   width: fit-content;
+  border: 0;
+
+  &__icon {
+    color: currentColor;
+    margin-right: 6px;
+  }
+
+  &--rounded {
+    border-radius: 8px;
+  }
+
+  &--primary {
+    background-color: $primary;
+    color: white;
+  }
+
+  &--secondary {
+    background-color: $secondary;
+    color: $grey-800;
+  }
 }

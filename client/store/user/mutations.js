@@ -1,8 +1,9 @@
 //@ts-check
 
 export default {
-  login(state, { token }) {
-    state.token = token
+  login(state, { token, username }) {
+    state.token = token,
+    state.username = username
   },
 
 }

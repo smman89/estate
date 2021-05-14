@@ -15,7 +15,7 @@
           </label>
         </li>
       </ul>
-      <button type="submit" class="button">Login</button>
+      <button type="submit" class="button button--rounded button--primary">Login</button>
     </form>
   </main>
 </template>
@@ -32,11 +32,15 @@ export default {
   methods: {
     async login(e) {
       e.preventDefault()
-      await this.$store.dispatch('user/login', {
-        username: this.username,
-        password: this.password
-      })
-      this.$router.push('/')
+      try {
+        await this.$store.dispatch('user/login', {
+          username: this.username,
+          password: this.password
+        })
+        this.$router.push('/properties')
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 }

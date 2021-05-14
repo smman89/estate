@@ -1,25 +1,30 @@
 /* ============
- * Actions for the Property module
+ * Actions for the User module
  * ============
  *
  * The actions that are available on the
- * Property module.
+ * User module.
  */
 //@ts-check
 
 export default {
-  async login({ commit }, authParams) {
-    try {
-      const { data } = await this.$axios.post(`/api/users/login`, authParams)
-      commit('login', data)
-    } catch (error) {
-      return error
-    }
+  login({ commit }, authParams) {
+    return new Promise((resolve, reject) => {
+      this.$axios.post(`/api/users/login`, authParams)
+       .then((response) => {
+            commit('login', response.data)
+            resolve()
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
   },
   async signup({ commit }, signupParams) {
     try {
-      const user = await this.$axios.post(`/api/users/login`, signupParams)
+      const user = await this.$axios.post(`/api/users/signup`, signupParams)
       commit('signup', user)
+      return user
     } catch (error) {
       return error
     }

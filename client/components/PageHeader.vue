@@ -3,23 +3,24 @@
     <nav class="main-nav">
       <ul class="main-nav__list">
         <li class="main-nav__item">
-          <NuxtLink to="/properties" class="main-nav__link"
-            >Объявления</NuxtLink
-          >
+          <NuxtLink to="/properties" class="main-nav__link">Объявления</NuxtLink>
         </li>
         <li class="main-nav__item">
-          <NuxtLink to="/" class="main-nav__link">Правила</NuxtLink>
+          <NuxtLink to="/rules" class="main-nav__link">Правила</NuxtLink>
         </li>
         <li class="main-nav__item">
-          <NuxtLink to="/" class="main-nav__link">Контакты</NuxtLink>
+          <NuxtLink to="/contacts" class="main-nav__link">Контакты</NuxtLink>
         </li>
       </ul>
       <ul class="main-nav__list user-list">
-        <li class="user-list__item">
+        <li class="user-list__item" v-if="username">
+          <NuxtLink class="user-list__login" to="/login">{{ username }}</NuxtLink>
+        </li>
+        <li class="user-list__item" v-if="!username">
           <NuxtLink class="user-list__login" to="/login">Войти</NuxtLink>
         </li>
         <li class="user-list__item">
-          <NuxtLink to="/properties/add" class="user-list__add-property button"
+          <NuxtLink to="/properties/add" class="user-list__add-property button button--primary button--rounded"
             >+ Подать объявление</NuxtLink
           >
         </li>
@@ -27,6 +28,17 @@
     </nav>
   </header>
 </template>
+
+<script>
+export default {
+  computed: {
+    username() {
+      return this.$store.state.user.username
+    }
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 .main-nav {

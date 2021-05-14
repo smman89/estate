@@ -91,7 +91,6 @@ export default {
 
 .properties__item {
   position: relative;
-  background-image: url();
   padding: 20px;
   padding-top: 100px;
   justify-content: space-between;
