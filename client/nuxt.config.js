@@ -42,6 +42,7 @@ export default {
     '@nuxtjs/style-resources'
   ],
 
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseUrl: 'http://localhost:4000',
@@ -50,8 +51,8 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     parallel: true,
-    cache: true,
-    hardSource: true,
+    cache: false,
+    hardSource: false,
     extend(config, { isDev, isClient }) {
       if (isDev) {
         config.devtool = isClient ? 'source-map' : 'inline-source-map'

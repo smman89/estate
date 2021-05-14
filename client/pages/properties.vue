@@ -20,13 +20,14 @@
           </li>
         </ul>
 
-        <ul class="pages-list">
+        <Pagination :pages="pages" v-model="currentPage" />
+        <!-- <ul class="pages-list">
           <li class="pages-list__item" v-for="(page, key) in pages" :key="key">
-            <button @click="currentPage = page" type="button">
+            <button @click="currentPage = page" :class="currentPage === page" type="button">
               {{ page }}
             </button>
           </li>
-        </ul>
+        </ul> -->
       </section>
     </main>
   </div>
@@ -35,10 +36,12 @@
 <script>
 import SelectBox from '../components/UI/SelectBox'
 import ButtonsToggle from '../components/UI/ButtonsToggle'
+import Pagination from '../components/UI/Pagination'
 export default {
   components: {
     SelectBox,
-    ButtonsToggle
+    ButtonsToggle,
+    Pagination
   },
   data() {
     return {
@@ -53,7 +56,6 @@ export default {
 
       cityId: 1,
       propertyType: 0,
-
       currentPage: 1,
       limit: 12,
       skip: 0
@@ -151,16 +153,6 @@ export default {
   &__tools {
     display: flex;
     justify-content: space-between;
-  }
-}
-
-.pages-list {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-
-  &__item {
-    margin: 8px;
   }
 }
 </style>
