@@ -3,14 +3,10 @@
     <h2 class="visually-hidden">Услуги</h2>
     <ul class="services__list">
       <li v-for="(service, key) of services" :key="key" class="services__item">
-        <img
-          :src="require(`@/assets/img/${service.image}`)"
-          :alt="service.title"
-          class="services__image"
-        />
+        <img :src="require(`@/assets/img/${service.image}`)" :alt="service.title" class="services__image" />
         <h3 class="services__title">{{ service.title }}</h3>
         <p class="services__description">{{ service.description }}</p>
-        <a :href="service.link" class="button">{{ service.buttonTitle }}</a>
+        <a :href="service.link" class="button button--primary button--rounded">{{ service.buttonTitle }}</a>
       </li>
     </ul>
   </section>
@@ -26,18 +22,18 @@ export default {
           description: 'Описание',
           link: '/',
           image: 'service-add-property.png',
-          buttonTitle: 'Подать объявление',
+          buttonTitle: 'Подать объявление'
         },
         {
           title: 'Квартиры в аренду',
           description: 'Описание',
           link: '/',
           image: 'service-find-property.png',
-          buttonTitle: 'Найти жилье',
-        },
-      ],
+          buttonTitle: 'Найти жилье'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 
@@ -61,8 +57,7 @@ export default {
     align-items: center;
 
     &:hover {
-      box-shadow: 0px 2px 2px -2px rgba(31, 27, 45, 0.08),
-        0px 4px 12px rgba(31, 27, 45, 0.08);
+      box-shadow: 0px 2px 2px -2px rgba(31, 27, 45, 0.08), 0px 4px 12px rgba(31, 27, 45, 0.08);
       border-radius: 12px;
       padding-top: 24px;
       padding-bottom: 31px;

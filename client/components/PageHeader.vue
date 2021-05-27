@@ -14,13 +14,13 @@
       </ul>
       <ul class="main-nav__list user-list">
         <li class="user-list__item" v-if="username">
-          <NuxtLink class="user-list__login" to="/login">{{ username }}</NuxtLink>
+          <NuxtLink class="user-list__login" to="/account/personal-info">{{ username }}</NuxtLink>
         </li>
         <li class="user-list__item" v-if="!username">
           <NuxtLink class="user-list__login" to="/login">Войти</NuxtLink>
         </li>
         <li class="user-list__item">
-          <NuxtLink to="/properties/add" class="user-list__add-property button button--primary button--rounded"
+          <NuxtLink to="/account/add-property" class="user-list__add-property button button--primary button--rounded"
             >+ Подать объявление</NuxtLink
           >
         </li>

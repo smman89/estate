@@ -36,6 +36,7 @@ export class Ad extends Entity {
   })
   userId: number;
 
+
   @property({
     type: 'number',
     required: true,
@@ -46,17 +47,24 @@ export class Ad extends Entity {
   postId: number;
 
   @property({
-    type: 'string',
-  })
-  avatar?: string;
-
-  @property({
     type: 'number',
+    required: true,
     postgresql: {
-      columnName: 'public_id',
+      columnName: 'price',
     },
   })
-  publicId?: number;
+  price: number;
+
+  @property({
+    type: 'string',
+    required: true,
+    postgresql: {
+      columnName: 'address',
+    },
+  })
+  address: string;
+
+
 
   @property({
     type: 'number',
@@ -66,12 +74,6 @@ export class Ad extends Entity {
     },
   })
   createdAt: number;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  firstname: string;
 
   @property({
     type: 'number',

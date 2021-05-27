@@ -1,20 +1,21 @@
 <template>
   <main class="page-login container">
-    <form class="form" @submit="login">
-      <ul class="login-list">
-        <li class="login-list__item field">
-          <label class="field__label">
-            <span>Username:</span>
+    <form class="page-login__form form" @submit="login">
+      <ul class="form__list">
+        <li class="form__item field">
+          <label class="field__block">
+            <span class="field__label">Username:</span>
             <input class="field__input" v-model="username" type="text" required />
           </label>
         </li>
-        <li class="login-list__item field">
-          <label class="field__label">
-            <span>Password:</span>
+        <li class="form__item field">
+          <label class="field__block">
+            <span class="field__label">Password:</span>
             <input class="field__input" v-model="password" type="password" name="password" required />
           </label>
         </li>
       </ul>
+
       <button type="submit" class="button button--rounded button--primary">Login</button>
     </form>
   </main>
@@ -47,17 +48,13 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .page-login {
   display: flex;
   justify-content: center;
-}
 
-.login-list {
-  list-style: none;
-  padding: 0;
-  &__item {
-    margin-top: 16px;
+  &__form {
+    margin-top: 25%;
   }
 }
 </style>

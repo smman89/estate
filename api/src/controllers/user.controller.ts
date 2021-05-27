@@ -3,7 +3,7 @@
 import {TokenService, UserService} from '@loopback/authentication';
 import {inject} from '@loopback/core';
 import {repository} from '@loopback/repository';
-import {getJsonSchemaRef, post, requestBody, SchemaObject} from '@loopback/rest';
+import {getJsonSchemaRef, getModelSchemaRef, param, patch, post, requestBody, response, SchemaObject} from '@loopback/rest';
 import {genSalt, hash} from 'bcryptjs';
 import * as _ from 'lodash';
 import {Credentials, TokenServiceBindings, UserServiceBindings} from '../components/jwt-authentication';
@@ -27,6 +27,18 @@ const CredentialsSchemaSignup: SchemaObject = {
       minLength: 8,
     },
   },
+};
+
+const RESOURCE_NAME = 'user';
+
+
+const ACL_USER = {
+  update: {
+    resource: `${RESOURCE_NAME}*`,
+    scopes: ['update'],
+    allowedRoles: ['admin'],
+  }
+
 };
 
 const CredentialsSchemaLogin: SchemaObject = {
@@ -89,7 +101,7 @@ export class UserController {
       },
     },
   })
-  async login(@requestBody(CredentialsRequestBodyLogin) credentials: Credentials): Promise<{token: string, username: string}> {
+  async login(@requestBody(CredentialsRequestBodyLogin) credentials: Credentials): Promise<{token: string, username: string, fullname: string, phone: string, email: string, id: number}> {
     // ensure the user exists, and the password is correct
     const user = await this.userService.verifyCredentials(credentials);
 
@@ -101,7 +113,7 @@ export class UserController {
 
     const date = new Date().toISOString();
     await this.tokenRepository.create({id: token, ttl: 1209600, created: date, userId: user.id});
-    return {token, username: user.username};
+    return {token, username: user.username, fullname: user.fullname, phone: user.phone, email: user.email, id: user.id};
   }
 
   @post('/api/users/signup', {
@@ -126,4 +138,24 @@ export class UserController {
     const salt = await genSalt(rounds);
     return hash(password, salt);
   }
+
+
+  @patch('/api/users/{id}')
+  @response(204, {
+    description: 'User PATCH success',
+  })
+  async updateById(
+    @param.path.number('id') id: number,
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: getModelSchemaRef(User, {partial: true}),
+        },
+      },
+    })
+    user: Pick<User, 'phone' | 'email' | 'fullname'>,
+  ): Promise<void> {
+    await this.userRepository.updateById(id, user);
+  }
 }
+

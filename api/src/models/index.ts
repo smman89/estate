@@ -4,5 +4,3 @@ export * from './token.model';
 export * from './user-credentials.model';
 export * from './user.model';
 
-export * from './complain.model';
-export * from './blacklist.model';

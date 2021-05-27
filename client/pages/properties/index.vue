@@ -1,42 +1,31 @@
 <template>
-  <div>
-    <main class="page-properties container-properties">
-      <h1 class="page-properties__title">Объявления</h1>
-      <section class="filter">
-        <ButtonsToggle :items="propertyTypes" v-model="propertyType" />
-        <SelectBox placeholder="Select city" label="Location" :items="cities" v-model="cityId" />
-      </section>
-      <section class="properties">
-        <h2 class="properties__title">Объявления об аренде</h2>
+  <main class="page-properties container-properties">
+    <section class="filter">
+      <ButtonsToggle :items="propertyTypes" v-model="propertyType" />
+      <SelectBox placeholder="Select city" label="Location" :items="cities" v-model="cityId" />
+    </section>
+    <section class="properties">
+      <h1 class="properties__title">Объявления об аренде</h1>
 
-        <div class="properties__tools">
-          <div class="properties__sort">Сортировать:</div>
-          <div class="properties__count">{{ propertiesCount }} объявлений</div>
-        </div>
-        <ul class="properties__list">
-          <li class="properties__item" v-for="(property, key) in properties" :key="key">
-            <img :src="property.images[0]" alt="" class="properties__image" />
-            <p class="properties__description">Description</p>
-          </li>
-        </ul>
-
-        <Pagination :pages="pages" v-model="currentPage" />
-        <!-- <ul class="pages-list">
-          <li class="pages-list__item" v-for="(page, key) in pages" :key="key">
-            <button @click="currentPage = page" :class="currentPage === page" type="button">
-              {{ page }}
-            </button>
-          </li>
-        </ul> -->
-      </section>
-    </main>
-  </div>
+      <div class="properties__tools">
+        <div class="properties__sort">Сортировать:</div>
+        <div class="properties__count">{{ propertiesCount }} объявлений</div>
+      </div>
+      <ul class="properties__list">
+        <li class="properties__item" v-for="(property, key) in properties" :key="key">
+          <img :src="property.images[0]" alt="" class="properties__image" />
+          <p class="properties__description">Description</p>
+        </li>
+      </ul>
+      <Pagination :pages="pages" v-model="currentPage" />
+    </section>
+  </main>
 </template>
 
 <script>
-import SelectBox from '../components/UI/SelectBox'
-import ButtonsToggle from '../components/UI/ButtonsToggle'
-import Pagination from '../components/UI/Pagination'
+import SelectBox from '../../components/UI/SelectBox'
+import ButtonsToggle from '../../components/UI/ButtonsToggle'
+import Pagination from '../../components/UI/Pagination'
 export default {
   components: {
     SelectBox,
@@ -115,12 +104,15 @@ export default {
 }
 
 .page-properties {
+  justify-self: flex-start;
+  align-self: flex-start;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 24px;
 }
 .filter {
   grid-column: 1/4;
+  height: 500px;
 }
 
 .properties {
@@ -133,7 +125,6 @@ export default {
     padding: 0;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(4, 1fr);
     gap: 24px;
     list-style: none;
   }

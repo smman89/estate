@@ -6,5 +6,8 @@ export default {
   },
   count(state, { data }) {
     state.count = data.count
+  },
+  create(state, { data }) {
+    state.list.push(data)
   }
 }

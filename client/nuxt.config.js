@@ -51,8 +51,8 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     parallel: true,
-    cache: false,
-    hardSource: false,
+    cache: true,
+    hardSource: true,
     extend(config, { isDev, isClient }) {
       if (isDev) {
         config.devtool = isClient ? 'source-map' : 'inline-source-map'

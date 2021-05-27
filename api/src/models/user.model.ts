@@ -9,7 +9,6 @@ import {UserCredentials} from './user-credentials.model';
   },
 })
 export class User extends Entity {
-  // must keep it
   @property({
     type: 'number',
     id: 1,
@@ -23,18 +22,27 @@ export class User extends Entity {
   })
   realm?: string;
 
-  // must keep it
   @property({
     type: 'string',
   })
   username: string;
 
-  // must keep it
+  @property({
+    type: 'string',
+  })
+  fullname: string;
+
   @property({
     type: 'string',
     required: true,
   })
   email: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  phone: string;
 
   @property({
     type: 'boolean',

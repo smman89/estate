@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <main>
-      <HeroSection />
-      <ServicesSection />
-      <PropertiesSection />
-      <CitySection />
-    </main>
-  </div>
+  <main>
+    <HeroSection />
+    <ServicesSection />
+    <PropertiesSection />
+    <CitySection />
+  </main>
 </template>
 
 <script>

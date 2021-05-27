@@ -7,6 +7,7 @@
  */
 //@ts-check
 
+
 export default {
   async list({ commit }, params) {
     try {
@@ -14,6 +15,15 @@ export default {
       commit('list', properties)
       const count = await this.$axios.get(`/api/ads/count?where=${JSON.stringify(params.where)}`)
       commit('count', count)
+    } catch (error) {
+      return error
+    }
+  },
+
+  async create({ commit }, property) {
+    try {
+      const newProperty = await this.$axios.post(`/api/ads`, property)
+      commit('create', newProperty)
     } catch (error) {
       return error
     }

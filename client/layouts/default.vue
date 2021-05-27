@@ -1,5 +1,5 @@
-<template>
-  <div>
+<template >
+  <div class="layout">
     <PageHeader />
     <Nuxt />
     <PageFooter />
@@ -19,3 +19,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" >
+.layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+</style>
