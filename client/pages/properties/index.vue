@@ -1,8 +1,8 @@
 <template>
   <main class="page-properties container-properties">
     <section class="filter">
-      <ButtonsToggle :items="propertyTypes" v-model="propertyType" />
-      <SelectBox placeholder="Select city" label="Location" :items="cities" v-model="cityId" />
+      <ButtonsToggle :items="propertyTypeList" v-model="propertyType" />
+      <SelectBox placeholder="Select city" label="Location" :items="cityList" v-model="cityId" />
     </section>
     <section class="properties">
       <h1 class="properties__title">Объявления об аренде</h1>
@@ -26,6 +26,7 @@
 import SelectBox from '../../components/UI/SelectBox'
 import ButtonsToggle from '../../components/UI/ButtonsToggle'
 import Pagination from '../../components/UI/Pagination'
+import { CITY_LIST, PROPERTY_TYPE_LIST } from '../../config'
 export default {
   components: {
     SelectBox,
@@ -38,11 +39,8 @@ export default {
         { label: 'For rent', value: 0 },
         { label: 'For sale', value: 1 }
       ],
-      cities: [
-        { label: 'New York', value: 0 },
-        { label: 'Dalas', value: 1 }
-      ],
-
+      cityList: CITY_LIST,
+      propertyTypeList: PROPERTY_TYPE_LIST,
       cityId: 1,
       propertyType: 0,
       currentPage: 1,

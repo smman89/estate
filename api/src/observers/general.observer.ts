@@ -5,7 +5,7 @@ import {
 } from '@loopback/core';
 import faker from 'faker';
 import {AdRepository} from '../repositories/ad.repository';
-const {name, random, lorem, image} = faker;
+const {random, lorem, address, image} = faker;
 
 /**
  * This class will be bound to the application as a `LifeCycleObserver` during
@@ -22,7 +22,7 @@ export class SampleObserver implements LifeCycleObserver {
      */
     async start(): Promise<void> {
         // Add your logic for start
-        if (false) {
+        if (process.env.SEED_DATA) {
             await this.createAds();
         }
     }
@@ -46,10 +46,9 @@ export class SampleObserver implements LifeCycleObserver {
                 cityId: random.number({min: 1, max: 100}),
                 userId: random.number({min: 1000, max: 1000000}),
                 postId: random.number({min: 100, max: 1000}),
-                avatar: image.imageUrl(),
-                publicId: random.number({min: 100, max: 1000}),
+                price: random.number({min: 1000, max: 2000}),
                 createdAt: random.number({min: 1616425635, max: 1616485635}),
-                firstname: name.firstName(),
+                address: address.streetName(),
                 adType: random.number({min: 0, max: 1}),
                 images: [...Array(5)].map(() => image.imageUrl())
             })
