@@ -63,12 +63,12 @@ export class AdController {
         'application/json': {
           schema: getModelSchemaRef(Ad, {
             title: 'NewAd',
-            exclude: ['adId'],
+            exclude: ['id'],
           }),
         },
       },
     })
-    ad: Omit<Ad, 'adId'>,
+    ad: Omit<Ad, 'id'>,
   ): Promise<Ad> {
     return this.adRepository.create(ad);
   }

@@ -10,7 +10,7 @@ export class Ad extends Entity {
     },
     generated: true,
   })
-  adId?: number;
+  id?: number;
 
   @property({
     type: 'string',
@@ -44,7 +44,7 @@ export class Ad extends Entity {
       columnName: 'post_id',
     },
   })
-  postId: number;
+  postId?: number;
 
   @property({
     type: 'number',
